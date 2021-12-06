@@ -33,11 +33,11 @@ z = []
 fin = []
 
 
-def onclick(event):
+def onclick(event): # Gets the points for each sub curve and stores it as List of Lists in the variable fin 
     global ix, iy, z, fin, coords
     ix, iy = event.xdata, event.ydata
     print('x = {}, y ={}'.format(ix, iy))
-    if ix > 0.9 and iy > 0.9:
+    if ix > 0.9 and iy > 0.9: # Clicking any point over (0.9,0.9) ends getting points for that sub curve
         fin.append(z)
         z = []
         return coords
@@ -57,7 +57,7 @@ fig.canvas.mpl_disconnect(cid)
 
 # CUBIC BEZIER CURVE
 
-for z in fin:
+for z in fin:   # The Sub curves are constructed individually
     fin = PB_Curve(len(z), z)
     # print(fin[0].subs(t, i))
     # print(fin[1].subs(t, i))
